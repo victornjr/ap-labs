@@ -5,13 +5,12 @@
 int get_line(char line[], int maxline);
 void reverse(char s[]);
 
-int main(void)
+int main()
 {
     char line[MAXLINE]; /* current input line */
 
     while (get_line(line, MAXLINE) > 0) {
         reverse(line);
-        printf("%s\n", line);
     }
 
     return 0;
@@ -33,5 +32,11 @@ int getLine(char s[], int lim)
 }
 
 void reverse(char s[]){
-  
+  int i;
+  char temp[MAXLINE];
+  int noChar = get_line(s, MAXLINE);
+  for(i = 0; i<noChar; ++i){
+    temp[i] = s[noChar-i];
+  }
+  printf("%s\n",temp);
 }
