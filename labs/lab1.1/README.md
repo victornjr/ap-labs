@@ -1,7 +1,20 @@
 Lab 1.1 - mycat
 ===============
+This lab is about the performance of two programs. The first one is cat2.c, which is a representation of the cat function used to concatenate. This program uses functions from a library amd the comparison is between it and the mycat.c program which uses system calls instead of the functions.
 
-- Rewrite the `cat.c` program by using `read`, `write`, `open` and `close` instead of their library equivalents.
-- Generate a report with performance metrics between the existing `cat.c` and your `mycat.c`.
-  The format of the report is free, you can add charts or whatever helps to understand the speed of both approaches.
-- Update the `README.md` file with instructions about how to compile and execute your program.
+Each program ran with the KJBible.txt file, which is big enough to see both performances.
+The way to compile them is:
+		gcc mycat.c -o mycat
+
+After compilation to run the program do the next:
+		./mycat KJBible.txt
+
+If you would like to concatenate more files, just add them after the execute program:
+		./mycat KJBible.txt hola.txt example.txt
+
+
+The next are some images that show the performance of both programs using GPROF, that is included in the gcc compiler. Also a time test was made to see which one rean faster.
+
+
+
+
