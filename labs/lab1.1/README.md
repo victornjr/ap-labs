@@ -15,6 +15,6 @@ If you would like to concatenate more files, just add them after the execute pro
 
 The next are some images that show the performance of both programs using GPROF, that is included in the gcc compiler. Also a time test was made to see which one rean faster.
 
-
+<img width="744" alt="mycat" src="https://user-images.githubusercontent.com/16769115/52595658-fc14f900-2e13-11e9-847f-4bd0a91b27bd.png">
 
 
