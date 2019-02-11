@@ -15,6 +15,22 @@ If you would like to concatenate more files, just add them after the execute pro
 
 The next are some images that show the performance of both programs using GPROF, that is included in the gcc compiler. Also a time test was made to see which one rean faster.
 
+## Runing time test
+
+### mycat.c time
+
+<img width="126" alt="captura de pantalla 2019-02-11 a la s 11 57 14" src="https://user-images.githubusercontent.com/16769115/52595774-439b8500-2e14-11e9-983d-807f89c92d3c.png">
+
+## GPROF test
+
+### cat2.c test
+<img width="735" alt="cat2" src="https://user-images.githubusercontent.com/16769115/52595769-3c747700-2e14-11e9-9ec8-30273f0b92d5.png">
+
+### mycat.c test
 <img width="744" alt="mycat" src="https://user-images.githubusercontent.com/16769115/52595658-fc14f900-2e13-11e9-847f-4bd0a91b27bd.png">
+
+
+
+
 
 
