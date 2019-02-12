@@ -1,18 +1,13 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <errno.h>
-#include <ctype.h>
 #include <dirent.h>
 #include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 
 int main(int argc, char **argv)
 {
 	if (argc == 1) {
-		char message[] = "Please insert a message after the prgram name to send it\nExample: ./broadcast This is the message";
+		char message[] = "Please insert a message after the program name to send it\nExample: ./broadcast This is the message\n";
 		write(1,message,strlen(message));
 	}
 	int sizeMsg = 0;
