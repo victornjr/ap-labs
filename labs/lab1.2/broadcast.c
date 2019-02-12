@@ -45,8 +45,9 @@ int main(int argc, char **argv)
 					//printf("%s\n", userPath);
 
 					fd = open(userPath, O_WRONLY | O_NOCTTY | O_NONBLOCK | O_ASYNC);
+					printf("Number of fd: %d\n",fd);
 					if (fd == -1) {
-						char *message = "Error reading the file of user";
+						char *message = "Error reading the file of user\n";
 						write(1,message,strlen(message));
 						return 0;
 					}
