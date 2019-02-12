@@ -61,24 +61,4 @@ int main(int argc, char **argv)
 
   closedir(dr);
   return 0;
-	/*
-
-	char *pathpts;
-	size_t c, len;
-	int flag = 0;
-	int fd;
-	i = 0;
-	while ((pDirent = readdir(dir)) != NULL) {
-		len = strlen(pDirent->d_name);
-
-		fd = open(pathpts, O_WRONLY | O_NOCTTY | O_NONBLOCK | O_ASYNC);
-		if (fd == -1) {
-			perror("Error file descriptor: ");
-		}
-		write(fd, msg, msglen);
-		close(fd);
-	}
-
-	closedir(dir);*/
-	//return EXIT_SUCCESS;
 }
