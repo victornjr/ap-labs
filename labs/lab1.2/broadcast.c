@@ -28,9 +28,10 @@ int main(int argc, char **argv)
 	struct dirent *de;
 	//char path[] = "ap-labs/";
 	char path[] = "/dev/pts/";
-  DIR *dr = opendir(path);
+	DIR *dr = opendir(path);
 	int fd;
 
+<<<<<<< HEAD
   if (dr == NULL){
 			char message[] ="Could not open current directory";
       write(1,message, strlen(message));
@@ -54,8 +55,32 @@ int main(int argc, char **argv)
 						close(fd);
 					}
 
+=======
+  	if (dr == NULL){
+		char message[] ="Could not open current directory";
+	     	write(1,message, strlen(message));
+	      	return 0;
+  	}
+
+  	while ((de = readdir(dr)) != NULL){
+		char *userPath =(char *)malloc(strlen(path) + strlen(de->d_name) + 1);
+		userPath[0] = '\0';
+		strcat(userPath,path);
+		strcat(userPath,de->d_name);
+		//printf("%s\n", userPath);
+
+		fd = open(userPath, O_WRONLY | O_NOCTTY | O_NONBLOCK | O_ASYNC);
+		printf("Number of fd: %d\n",fd);
+		if (fd == -1) {
+			char *message = "Error reading the file of user\n";
+			write(1,message,strlen(message));
+			return 0;
+		}
+		write(fd, completeStr, strlen(completeStr));
+		close(fd);
+>>>>>>> 0c96c58feed3d20e28bed5e5dd148f3bd14a6a2d
 	}
 
-  closedir(dr);
-  return 0;
+  	closedir(dr);
+  	return 0;
 }
