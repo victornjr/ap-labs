@@ -43,15 +43,17 @@ int main(int argc, char **argv)
 					strcat(userPath,path);
 					strcat(userPath,de->d_name);
 					//printf("%s\n", userPath);
-
-					fd = open(userPath, O_WRONLY | O_NOCTTY | O_NONBLOCK | O_ASYNC);
-					if (fd == -1) {
-						char *message = "Error reading the file of user";
-						write(1,message,strlen(message));
-						return 0;
+					if(isdigit(de->d_name)){
+						fd = open(userPath, O_WRONLY | O_NOCTTY | O_NONBLOCK | O_ASYNC);
+						if (fd == -1) {
+							char *message = "Error reading the file of user";
+							write(1,message,strlen(message));
+							return 0;
+						}
+						write(fd, completeStr, strlen(completeStr));
+						close(fd);
 					}
-					write(fd, completeStr, strlen(completeStr));
-					close(fd);
+
 	}
 
   closedir(dr);
