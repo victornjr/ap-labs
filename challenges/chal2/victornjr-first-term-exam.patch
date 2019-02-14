@@ -1,0 +1,119 @@
+diff --git a/challenges/chal2/dir-scan.go b/challenges/chal2/dir-scan.go
+index 9843134..6a3be94 100644
+--- a/challenges/chal2/dir-scan.go
++++ b/challenges/chal2/dir-scan.go
+@@ -3,10 +3,41 @@ package main
+ import (
+ 	"fmt"
+ 	"os"
++	"path/filepath"
+ )
+ 
+ // scanDir stands for the directory scanning implementation
+ func scanDir(dir string) error {
++	var files []string
++	countFiles := make(map[string]int)
++
++	errPath := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
++		files = append(files, path)
++		return nil
++	})
++
++	if errPath != nil {
++		fmt.Println("There was an error with getting the files")
++	}
++
++	for _, file := range files {
++		info, _ := os.Lstat(file)
++		switch mode := info.Mode(); {
++		case mode.IsDir():
++			countFiles["Directories"]++
++		case mode&os.ModeSymlink != 0:
++			countFiles["Symbolic links"]++
++		case mode&os.ModeTemporary != 0:
++			countFiles["Temporary"]++
++		default:
++			countFiles["Other Files"]++
++		}
++	}
++	fmt.Println("Directory Scanner Tool\n")
++	for key, value := range countFiles {
++		fmt.Println(key, " : ", value)
++	}
++
+ 	return nil
+ }
+ 
+diff --git a/challenges/chal2/dmesg-analyzer.c b/challenges/chal2/dmesg-analyzer.c
+index aaa0e93..31cb310 100644
+--- a/challenges/chal2/dmesg-analyzer.c
++++ b/challenges/chal2/dmesg-analyzer.c
+@@ -1,14 +1,18 @@
+ #include <stdio.h>
++#include <unistd.h>
++#include <string.h>
++#include <fcntl.h>
+ 
+ #define REPORT_FILE "report.txt"
+ 
+ void analizeLog(char *logFile, char *report);
++void fileRead(int);
+ 
+ int main(int argc, char **argv) {
+ 
+     if (argc < 2) {
+-	printf("Usage:./dmesg-analizer.o logfile.txt\n");
+-	return 1;
++    	printf("Usage:./dmesg-analizer.o logfile.txt\n");
++    	return 1;
+     }
+ 
+     analizeLog(argv[1], REPORT_FILE);
+@@ -16,10 +20,32 @@ int main(int argc, char **argv) {
+     return 0;
+ }
+ 
++void fileRead(int id){
++
++}
++
+ void analizeLog(char *logFile, char *report) {
+     printf("Generating Report from: [%s] log file\n", logFile);
+ 
+-    // Implement your solution here.
++    int fileR;
++    char element[1];
++    int fileW;
++
++    if((fileR = open(logFile, O_RDONLY )) < 0){
++      printf("Can't open log file\n");
++    }
++    else{
++      if((fileW = creat(report, S_IRUSR | S_IWUSR)) < 0){
++        printf("Can't create the reportfile\n");
++      }
++
++      while(read(fileR,element,1) == 1){
++          write(fileW,element,strlen(element));
++      }
++      close(fileR);
++      close(fileW);
++    }
++
+ 
+     printf("Report is generated at: [%s]\n", report);
+ }
+diff --git a/labs/lab1.1/README.md b/labs/lab1.1/README.md
+deleted file mode 100644
+index b2e1938..0000000
+--- a/labs/lab1.1/README.md
++++ /dev/null
+@@ -1,7 +0,0 @@
+-Lab 1.1 - mycat
+-===============
+-
+-- Rewrite the `cat.c` program by using `read`, `write`, `open` and `close` instead of their library equivalents.
+-- Generate a report with performance metrics between the existing `cat.c` and your `mycat.c`.
+-  The format of the report is free, you can add charts or whatever helps to understand the speed of both approaches.
+-- Update the `README.md` file with instructions about how to compile and execute your program.
+\ No newline at end of file
