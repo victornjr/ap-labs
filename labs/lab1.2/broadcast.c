@@ -9,6 +9,7 @@ int main(int argc, char **argv)
 	if (argc == 1) {
 		char message[] = "Please insert a message after the program name to send it\nExample: ./broadcast This is the message\n";
 		write(1,message,strlen(message));
+		return -1;
 	}
 	int sizeMsg = 0;
 	for (int i = 1; i < argc; i++) {
@@ -37,12 +38,13 @@ int main(int argc, char **argv)
       return 0;
   }
 
+  printf("Funciona!\n");
   while ((de = readdir(dr)) != NULL){
 					char *userPath =(char *)malloc(strlen(path) + strlen(de->d_name) + 1);
 					userPath[0] = '\0';
 					strcat(userPath,path);
 					strcat(userPath,de->d_name);
-					//printf("%s\n", userPath);
+					printf("%s\n", userPath);
 					if(isdigit(de->d_name)){
 						fd = open(userPath, O_WRONLY | O_NOCTTY | O_NONBLOCK | O_ASYNC);
 						if (fd == -1) {
