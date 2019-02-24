@@ -11,3 +11,4 @@ After that just run the broadcast program and add some text as argument:
 		./broadcast This is the message to be broadcasted
 
 Then each user should receive the message.
+It is important to say that all users need to use ssh and (in my case) the admin user needs to run everything with the sudo command.
