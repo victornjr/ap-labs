@@ -45,6 +45,11 @@ int main(int argc, char **argv)
     struct wordNode *newWord = NULL;
     char word[WORDSIZE];
 
+    if(argc < 2){
+      printf("Usage: ./cross-ref document.txt\n");
+      return -1;
+    }
+
     fptr = fopen(argv[1], "r");
     while (formWord(word, WORDSIZE) != EOF){
       if (isAWord(word)){
