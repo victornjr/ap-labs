@@ -17,7 +17,7 @@ Once the servers are initialized, we need to do the same with the client. So in 
 ```
 go build clockWall.go
 ```
-Then to access the different time zones just run locally the executable with arguments that have fake time zones, like these ones:
+Then to access the different time zones just run locally the executable with arguments that have fake time zones, like these ones (Note that the names of the cities that you give will be displayed, but the time zones will be the ones of TZ variable':
 ```
 ./clockWall NewYork=localhost:8010 Tokyo=localhost:8020 London=localhost:8030
 ```
