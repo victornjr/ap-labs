@@ -4,13 +4,19 @@ This lab is about the performance of two programs. The first one is cat2.c, whic
 
 Each program ran with the KJBible.txt file, which is big enough to see both performances.
 The way to compile them is:
+```
 		gcc mycat.c -o mycat
+```
 
 After compilation to run the program do the next:
+```
 		./mycat KJBible.txt
+```
 
 If you would like to concatenate more files, just add them after the execute program:
+```
 		./mycat KJBible.txt hola.txt example.txt
+```
 
 
 The next are some images that show the performance of both programs using GPROF, that is included in the gcc compiler. Also a time test was made to see which one rean faster.
