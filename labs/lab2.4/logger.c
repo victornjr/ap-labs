@@ -40,7 +40,6 @@ int infof(const char *format, ...){
     result = vfprintf(stdout, start, args);
   }else{
     vsyslog(LOG_ERR,start, args);
-    va_end(args);
     result = 1;
   }
   va_end(args);
@@ -58,7 +57,6 @@ int warnf(const char *format, ...){
     result = vfprintf(stdout, start, args);
   }else{
     vsyslog(LOG_ERR,start, args);
-    va_end(args);
     result = 1;
   }
   va_end(args);
@@ -76,7 +74,6 @@ int errorf(const char *format, ...){
     result = vfprintf(stdout, start, args);
   }else{
     vsyslog(LOG_ERR,start, args);
-    va_end(args);
     result = 1;
   }
   va_end(args);
@@ -95,7 +92,6 @@ int panicf(const char *format, ...){
     result = vfprintf(stdout, start, args);
   }else{
     vsyslog(LOG_ERR,start, args);
-    va_end(args);
     result = 1;
   }
   va_end(args);
