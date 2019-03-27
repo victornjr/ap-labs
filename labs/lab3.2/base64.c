@@ -226,10 +226,10 @@ int main(int argc, char **argv){
     errorf("Error with signal\n");
     exit(EXIT_FAILURE);
   }
-  /*if (signal(SIGINFO, getProgress) == SIG_ERR){
+  if (signal(SIGPWR, getProgress) == SIG_ERR){
     errorf("Error with signal\n");
     exit(EXIT_FAILURE);
-  }*/
+  }
 
   if (strcmp(argv[1],"--encode") == 0){
     encodeOrDecode(1, argv[2]);
