@@ -14,4 +14,4 @@ pi_loop.c
 
 In order to compile them just use the Makefile: `make` 
 
-After that you can just run any program by `./nameOfTheProgram
+After that you can just run any program by `./nameOfTheProgram`
